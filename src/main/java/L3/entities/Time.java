@@ -2,6 +2,7 @@ package L3.entities;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,12 @@ public class Time {
 	private int written = 0;
 	@OneToMany(mappedBy = "id.timeId", cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Prod> prods;
+
+	public Time(Long id, LocalDate modified, int goal) {
+		this.id = id;
+		this.modified = modified;
+		this.goal = goal;
+	}
 
 	public Time(LocalDate modified) {
 		this.modified = modified;
